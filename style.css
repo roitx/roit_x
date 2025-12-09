@@ -1,0 +1,30 @@
+:root{--bg:#071021;--card:#0e1624;--accent:#4dfcff;--accent2:#9b8cff;--text:#eaf1ff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#071021 0%, #071a2a 100%);color:var(--text);min-height:100vh}
+.brand{font-weight:800;font-size:28px;padding:18px 20px;color:var(--accent)}
+.auth-wrap{max-width:420px;margin:60px auto;padding:10px}
+.auth-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.6);backdrop-filter: blur(6px)}
+.field input, input{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)}
+.passbox{position:relative}
+.eye{position:absolute;right:8px;top:8px;border:none;background:transparent;color:var(--text);cursor:pointer}
+.btn{padding:10px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#061124;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+.btn-outline{padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:var(--text);cursor:pointer}
+.link{color:#b8d7ff;text-decoration:underline}
+.page-login .bg-wave{position:fixed;left:0;right:0;top:0;height:220px;background:linear-gradient(90deg, rgba(77,252,255,0.08), rgba(155,140,255,0.06));filter:blur(40px);transform:skewY(-6deg);z-index:-1}
+.site-header{display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
+.container{width:min(94%,1100px);margin:20px auto;padding:10px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:16px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.5);cursor:pointer}
+.card.big{grid-column:span 2;text-align:center;font-size:20px;padding:26px}
+.sidebar{position:fixed;left:0;top:60px;width:220px;height:calc(100% - 60px);background:rgba(10,16,28,0.9);padding:10px;border-right:1px solid rgba(255,255,255,0.02);overflow:auto}
+.sidebar.hidden{transform:translateX(-260px);transition:transform .3s ease}
+.sidebar ul{list-style:none;padding:0;margin:0}
+.sidebar li{margin:6px 0}
+.container .panel{background:rgba(255,255,255,0.02);padding:16px;border-radius:10px}
+.class-grid{display:flex;gap:10px;flex-wrap:wrap}
+.classbtn{display:inline-block;padding:10px 12px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#061124;border-radius:8px;text-decoration:none}
+.subjects .subbtn{display:inline-block;margin:6px;padding:8px 10px;background:rgba(255,255,255,0.03);border-radius:8px;color:var(--text);text-decoration:none}
+.cal-day{display:inline-block;width:36px;height:36px;line-height:36px;margin:4px;text-align:center;border-radius:6px;background:transparent;border:1px solid rgba(255,255,255,0.03)}
+.cal-day.today{box-shadow:0 0 14px rgba(77,252,255,0.3);border-color:var(--accent);animation:glow 1.6s infinite}
+@keyframes glow{0%{box-shadow:0 0 0 rgba(77,252,255,0.0)}50%{box-shadow:0 0 20px rgba(77,252,255,0.18)}100%{box-shadow:0 0 0 rgba(77,252,255,0.0)}}
+.quote{font-size:20px;padding:10px;border-left:4px solid var(--accent);}
+.file-item{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.03)}
