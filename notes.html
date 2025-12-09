@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Roitx — Notes</title><link rel="stylesheet" href="css/style.css"></head><body>
+<header class="site-header"><div class="brand">Roitx</div><a href="dashboard.html" class="link">Back</a></header>
+<main class="container">
+  <h2>Notes & Uploads</h2>
+  <div class="card">
+    <input id="fileInput" type="file" accept=".pdf,image/*">
+    <input id="fileTitle" placeholder="Title (optional)">
+    <button id="uploadBtn" class="btn">Upload</button>
+    <p id="upMsg" class="status"></p>
+  </div>
+  <div id="filesList"></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/notes.js"></script>
+</body></html>

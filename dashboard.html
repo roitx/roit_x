@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Roitx — Dashboard</title><link rel="stylesheet" href="css/style.css"></head><body class="page-dashboard">
+<header class="site-header"><div class="brand">Roitx</div><nav class="top-actions"><button id="menuBtn" class="icon">☰</button><button id="logoutBtn" class="btn-outline">Logout</button></nav></header>
+<aside id="side" class="sidebar hidden">
+  <ul>
+    <li><a href="#" id="startLearning">Start Learning</a></li>
+    <li><a href="#" id="studyTimerBtn">Study Timer</a></li>
+    <li><a href="#" id="calendarBtn">Calendar</a></li>
+    <li><a href="#" id="dailyMotBtn">Daily Motivation</a></li>
+    <li><a href="notes.html">Notes / PDFs</a></li>
+  </ul>
+</aside>
+
+<main class="container">
+  <section class="hero">
+    <h1>Welcome back, <span id="userName">Learner</span> ✨</h1>
+    <p class="muted">Pick a feature to get started</p>
+  </section>
+
+  <section class="cards">
+    <div class="card big" id="cardStart">Start Learning</div>
+    <div class="card" id="cardTimer">Study Timer</div>
+    <div class="card" id="cardCal">Calendar</div>
+    <div class="card" id="cardMot">Daily Motivation</div>
+  </section>
+
+  <section id="featureArea"></section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/features.js"></script>
+<script>
+// init ui
+document.getElementById('menuBtn').addEventListener('click', ()=> document.getElementById('side').classList.toggle('hidden'));
+document.getElementById('logoutBtn').addEventListener('click', async ()=>{ await supabase.auth.signOut(); location.href='index.html'; });
+// wire sidebar links
+document.getElementById('startLearning').addEventListener('click', ()=> loadStart());
+document.getElementById('studyTimerBtn').addEventListener('click', ()=> loadTimer());
+document.getElementById('calendarBtn').addEventListener('click', ()=> loadCalendar());
+document.getElementById('dailyMotBtn').addEventListener('click', ()=> loadMotivation());
+// display user name
+(async function(){ const {data}=await supabase.auth.getUser(); if(data && data.user){ document.getElementById('userName').textContent = data.user.email.split('@')[0]; } })();
+// default landing
+loadStart();
+</script>
+</body></html>

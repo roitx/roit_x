@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roitx — Signup</title><link rel="stylesheet" href="css/style.css"></head><body class="page-signup">
+<div class="auth-wrap">
+  <div class="brand">Roitx</div>
+  <div class="card auth-card">
+    <h2>Create account</h2>
+    <input id="name" placeholder="Full name">
+    <input id="email" type="email" placeholder="Email">
+    <div class="field passbox"><input id="password" type="password" placeholder="Password"><button id="toggleSign" class="eye">👁️</button></div>
+    <div class="pw-suggestion" id="pwSuggestion">Password strength: <span id="pwStrength">—</span></div>
+    <div class="actions"><button id="signupBtn" class="btn">Sign up</button><a href="index.html" class="link">Login</a></div>
+    <p id="signupMsg" class="status"></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script>
+document.getElementById('toggleSign').addEventListener('click', ()=>{
+  const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password';
+});
+// password suggestion basic
+const pw = document.getElementById('password');
+const strength = document.getElementById('pwStrength');
+pw.addEventListener('input', ()=>{
+  const v=pw.value; let score=0;
+  if(v.length>=8) score++; if(/[A-Z]/.test(v)) score++; if(/[0-9]/.test(v)) score++; if(/[^A-Za-z0-9]/.test(v)) score++;
+  const map=['Very weak','Weak','Okay','Good','Strong']; strength.textContent = map[score];
+});
+document.getElementById('signupBtn').addEventListener('click', async ()=>{
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const password=document.getElementById('password').value;
+  const msg=document.getElementById('signupMsg'); msg.textContent='Creating...';
+  try{
+    const {error} = await supabase.auth.signUp({email,password},{data:{name}});
+    if(error) throw error;
+    msg.textContent='Account created — go to login';
+    setTimeout(()=> location.href='index.html',800);
+  }catch(e){ msg.textContent = e.message || JSON.stringify(e); }
+});
+</script>
+</body></html>
