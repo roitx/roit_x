@@ -26,3 +26,16 @@ async function loginUser() {
   if (error) alert(error.message);
   else window.location.href = "dashboard.html";
 }
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+  "YOUR_SUPABASE_URL",
+  "YOUR_ANON_KEY"
+);
+
+document.getElementById("googleLogin").addEventListener("click", async () => {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "google"
+  });
+  if (error) alert(error.message);
+});
