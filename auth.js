@@ -34,8 +34,12 @@ const supabase = createClient(
 );
 
 document.getElementById("googleLogin").addEventListener("click", async () => {
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider: "google"
+  const { error } = await window.supabaseClient.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: window.location.origin + "/dashboard.html"
+    }
   });
+
   if (error) alert(error.message);
 });
