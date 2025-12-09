@@ -1,42 +1,17 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Roitx — Login</title>
-<link rel="stylesheet" href="css/style.css">
-</head><body class="page-login">
-<div class="bg-wave"></div>
-<div class="auth-wrap">
-  <div class="brand">Roitx</div>
-  <div class="card auth-card">
-    <h2>Welcome back</h2>
-    <div class="field"><input id="email" type="email" placeholder="Email"></div>
-    <div class="field passbox"><input id="password" type="password" placeholder="Password"><button id="toggle" class="eye">👁️</button></div>
-    <div class="actions"><button id="loginBtn" class="btn">Login</button><a href="signup.html" class="link">Create account</a></div>
-    <p id="loginMsg" class="status"></p>
-  </div>
-</div>
-
+<title>Login - Roitx</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/auth.js"></script>
-<script>
-// small UI effects
-document.getElementById('toggle').addEventListener('click', ()=>{
-  const p = document.getElementById('password');
-  p.type = p.type==='password'?'text':'password';
-});
-document.getElementById('loginBtn').addEventListener('click', async ()=>{
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
-  const msg = document.getElementById('loginMsg');
-  msg.textContent = 'Signing in...';
-  try{
-    const {error} = await supabase.auth.signInWithPassword({email, password});
-    if(error) throw error;
-    msg.textContent = 'Success — redirecting...';
-    setTimeout(()=> location.href='dashboard.html', 700);
-  }catch(e){ msg.textContent = e.message || JSON.stringify(e); }
-});
-</script>
-</body></html>
+<script src="supabase.js"></script>
+<script src="auth.js"></script>
+</head>
+<body>
+<h1>Roitx</h1>
+<h2>Login</h2>
+<input id="email" placeholder="Email"><br>
+<input id="password" type="password" placeholder="Password"><br>
+<button onclick="loginUser()">Login</button>
+<p>No account? <a href="signup.html">Signup</a></p>
+</body>
+</html>
