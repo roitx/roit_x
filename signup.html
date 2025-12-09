@@ -1,21 +1,20 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Roitx — Signup</title><link rel="stylesheet" href="css/style.css"></head><body class="page-signup">
-<div class="auth-wrap">
-  <div class="brand">Roitx</div>
-  <div class="card auth-card">
-    <h2>Create account</h2>
-    <input id="name" placeholder="Full name">
-    <input id="email" type="email" placeholder="Email">
-    <div class="field passbox"><input id="password" type="password" placeholder="Password"><button id="toggleSign" class="eye">👁️</button></div>
-    <div class="pw-suggestion" id="pwSuggestion">Password strength: <span id="pwStrength">—</span></div>
-    <div class="actions"><button id="signupBtn" class="btn">Sign up</button><a href="index.html" class="link">Login</a></div>
-    <p id="signupMsg" class="status"></p>
-  </div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Signup - Roitx</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase.js"></script>
 <script src="auth.js"></script>
+</head>
+<body>
+<h1>Roitx</h1>
+<h2>Create account</h2>
+<input id="email" placeholder="Email"><br>
+<input id="password" type="password" placeholder="Password"><br><button id="toggleSign" class="eye">👁️</button>
+<button onclick="signUpUser()">Sign up</button>
+<p>Already user? <a href="index.html">Login</a></p>
+
+    
 
 <script>
 document.getElementById('toggleSign').addEventListener('click', ()=>{
